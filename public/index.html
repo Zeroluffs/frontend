@@ -58,52 +58,52 @@
 
     <script>
       var firebaseConfig = {
-        apiKey: "AIzaSyBe1d7q_1pSzKphW6s35MpURU3RW6p6Tmk",
-        authDomain: "parcial-2-2a03c.firebaseapp.com",
-        databaseURL: "https://parcial-2-2a03c.firebaseio.com",
-        projectId: "parcial-2-2a03c",
-        storageBucket: "parcial-2-2a03c.appspot.com",
-        messagingSenderId: "683984370588",
-        appId: "1:683984370588:web:677165d873efef3d836659",
-        measurementId: "G-J61GM9QNHN",
-      };
-      firebase.initializeApp(firebaseConfig);
+        apiKey: 'AIzaSyBe1d7q_1pSzKphW6s35MpURU3RW6p6Tmk',
+        authDomain: 'parcial-2-2a03c.firebaseapp.com',
+        databaseURL: 'https://parcial-2-2a03c.firebaseio.com',
+        projectId: 'parcial-2-2a03c',
+        storageBucket: 'parcial-2-2a03c.appspot.com',
+        messagingSenderId: '683984370588',
+        appId: '1:683984370588:web:677165d873efef3d836659',
+        measurementId: 'G-J61GM9QNHN',
+      }
+      firebase.initializeApp(firebaseConfig)
 
       function getID(id) {
-        return document.getElementById(id).value;
+        return document.getElementById(id).value
       }
     </script>
 
     <script>
-      $("#login").click(function () {
-        event.preventDefault();
-        username = $("#loginEmail").val();
-        password = $("#loginPassword").val();
+      $('#login').click(function () {
+        event.preventDefault()
+        username = $('#loginEmail').val()
+        password = $('#loginPassword').val()
         firebase
           .auth()
           .signInWithEmailAndPassword(username, password)
           .catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-          });
+            var errorCode = error.code
+            var errorMessage = error.message
+          })
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
             firebase
               .auth()
               .currentUser.getIdToken()
               .then(function (idToken) {
-                localStorage.auth = idToken;
-                localStorage.uid = firebase.auth().currentUser.uid;
-              });
-            window.location = "registroOperador.html";
+                localStorage.auth = idToken
+                localStorage.uid = firebase.auth().currentUser.uid
+              })
+            window.location = 'registroOperador.html'
           } else {
             Swal.fire({
-              icon: "error",
-              title: "Usuario y/o contraseña son incorrectos",
-            });
+              icon: 'error',
+              title: 'Usuario y/o contraseña son incorrectos',
+            })
           }
-        });
-      });
+        })
+      })
     </script>
   </body>
 </html>

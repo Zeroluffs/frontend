@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Registro</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="assets/css/about.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<link rel="stylesheet"
+		href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+		integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+</head>
+
+<body>
+	<div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-overlay">
+		<header class="bmd-layout-header">
+			<div class="navbar navbar-light bg-faded">
+				<button class="navbar-toggler" type="button" data-toggle="drawer" data-target="#dw-s2">
+					<span class="sr-only">Toggle drawer</span>
+					<i class="material-icons">menu</i>
+				</button>
+				<ul class="nav navbar-nav">
+					<li class="nav-item">Empresa 1</li>
+				</ul>
+			</div>
+		</header>
+		<div id="dw-s2" class="bmd-layout-drawer bg-faded">
+			<header>
+				<a class="navbar-brand">Empresa 1</a>
+			</header>
+			<ul class="list-group">
+				<a class="nav-item nav-link " href="test.html">Quiz</a>
+				<a class="nav-item nav-link active" href="about.html">Empleados<span
+						class="sr-only">(current)</span></a>
+				<a class="nav-item nav-link" href="answers.html">Resultados</a>
+				<a class="nav-item nav-link" href="registroOperador.html">Operaciones de Empleados</a>
+				<a class="nav-item nav-link" href="index.html">Salir</a>
+			</ul>
+		</div>
+
+		<div class="container ">
+			<h2>Operaciones de Empleados</h2>
+			<form id="formOperadores">
+				<div class="form-group">
+					<label for="exampleInputEmail1">Nombre de Operador</label>
+					<input type="email" class="form-control" id="nombreOperador" aria-describedby="emailHelp"
+						placeholder="Empleado">
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="exampleInputPassword1">Direccion</label>
+						<input type="password" class="form-control" id="direccionOperador" placeholder="Direccion">
+					</div>
+					<form>
+						<div class="form-group col-md-6">
+							<label for="exampleFormControlFile1">Selecciona Imagen de Operador</label>
+							<input type="file" class="form-control-file" id="imagenOperador">
+						</div>
+					</form>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="exampleInputPassword1">Email</label>
+					<input type="text" class="form-control" id="emailOperador" placeholder="Email">
+				</div>
+
+				<div class="form-group col-md-6">
+					<label for="exampleInputPassword1">Contraseña</label>
+					<input type="password" class="form-control" id="passwordOperador" placeholder="Contraseña">
+				</div>
+
+				<button id="registroOperador" type="submit" class="btn btn-primary">Registrar</button>
+				<button type="submit" class="btn btn-primary">Actualizar</button>
+				<button type="submit" class="btn btn-primary">Eliminar</button>
+				<button type="submit" class="btn btn-primary">Consultar</button>
+			</form>
+
+
+
+
+
+
+
+
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+			integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+			crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+			integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+			crossorigin="anonymous"></script>
+		<script src="/__/firebase/7.14.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+		<script>
+			$(document).ready(function () {
+				$('body').bootstrapMaterialDesign();
+			});
+		</script>
+
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyBe1d7q_1pSzKphW6s35MpURU3RW6p6Tmk",
+				authDomain: "parcial-2-2a03c.firebaseapp.com",
+				databaseURL: "https://parcial-2-2a03c.firebaseio.com",
+				projectId: "parcial-2-2a03c",
+				storageBucket: "parcial-2-2a03c.appspot.com",
+				messagingSenderId: "683984370588",
+				appId: "1:683984370588:web:677165d873efef3d836659",
+				measurementId: "G-J61GM9QNHN",
+			};
+			firebase.initializeApp(firebaseConfig);
+
+			function getID(id) {
+				return document.getElementById(id).value;
+			}
+			$("#registroOperador").click(function () {
+				console.log(localStorage.uid, "hi")
+				event.preventDefault();
+				function arrayJSON(
+					nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador
+				) {
+					var data = {
+						nombreOperador: nombreOperador,
+						emailOperador: emailOperador,
+						passwordOperador: passwordOperador,
+						imagenOperador: imagenOperador,
+						direccionOperador: direccionOperador,
+						UIDEmpresa: UIDEmpresa
+					}
+					return data
+				}
+				var nombreOperador = $("#nombreOperador").val();
+				var passwordOperador = $("#passwordOperador").val();
+				var imagenOperador = $('#imagenOperador').val()
+				var direccionOperador = $('#direccionOperador').val()
+				var emailOperador = $("#emailOperador").val()
+				var UIDEmpresa = localStorage.uid
+				var arrayOperador = arrayJSON(nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador)
+				var auth = firebase.auth()
+
+
+				var promise = auth.createUserWithEmailAndPassword(
+					emailOperador,
+					passwordOperador
+				)
+				// If there is any error stop the process.
+				promise.catch(function (error) {
+					var errorCode = error.code
+					console.log(`GOT ERROR: ` + errorCode)
+					if (errorCode == 'auth/weak-password') return // password to weak. Minimal 6 characters
+					if (errorCode == 'auth/email-already-in-use') return // Return a email already in use error
+				})
+
+				promise.then(function () {
+					var userUid = auth.currentUser.uid
+					console.log(UIDEmpresa)
+					var db = firebase.database()
+					//db.collection('empresas').doc(userUid).set(arrayData)
+					db.ref('operadores').child(userUid).set(arrayOperador)
+					document.getElementById('registerForm').reset()
+				})
+			});
+		</script>
+		</script>
+
+
+		<table style="width:100%" id="tabla">
+
+		</table>
+
+		<script>
+			var db = firebase.database();
+			var ref = db.ref("operadores");
+
+			var table = document.getElementById("tabla");
+
+			//limpia la tabla
+			table.innerHTML = "";
+
+			//con esta función recorre todos los datos almacenados en FB ordenados por mi child(tipo)
+
+			ref.orderByChild("empresas").equalTo(localStorage.uid).on("child_added", function (snapshot) {
+				//repite el proceso como cuantas referencias encuentre y los asigna a la lista "d"
+				var d = snapshot.val();
+
+				{
+					var row = table.insertRow(0);
+					var cell1 = row.insertCell(0);
+					var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+
+					// asigna a las celdas el valir del Child especificado
+					cell1.innerHTML = d.nombreOperador;
+					cell2.innerHTML = d.direccionOperador;
+					cell3.innerHTML = d.emailOperador;
+				}
+			});
+		</script>
+</body>
+
+</html>
