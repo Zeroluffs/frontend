@@ -1,0 +1,54 @@
+html,
+body {
+    background: url("../img/fondo2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: transparent;
+    border: 0px !important;
+}
+
+.card-header {
+    background-color: transparent;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    margin-left: 4px;
+}
+
+.btn {
+    width: 100%;
+    color: gray;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}

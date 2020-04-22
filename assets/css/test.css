@@ -1,0 +1,31 @@
+.pregresp {
+    border: 1px solid #7DA5E0;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pregunta {
+    color: #7DA5E0;
+}
+
+.respuestas {
+    color: #000000;
+}
+
+.card {
+    width: auto;
+    margin-top: 30px;
+}
+
+.btn {
+    width: 100%;
+}
+
+.btnEnviar {
+    padding: 30px;
+}
