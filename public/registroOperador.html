@@ -79,130 +79,129 @@
 
 
 
+			<!--Enterprise section-->
+			<div class="mywrap"></div>
+			<div class="mywrap m-3">
+				<section class="mt-3 card shadow">
+					<div class="row no-gutters">
+						<div class="col-12 col-md-12 col-lg-4 col-xl-4 mt-3">
 
-
-
-
-
+						</div>
+						<div class="col-12 col-md-12 col-lg-8 col-xl-8 mt-3">
+							<div class="card-body">
+								<div class="card-text">
+									<h5 id="compañiaNombre" class=" text-center card-title"></h5>
+									<h6 id="representanteNombre" class=" text-center card-text"></h6>
+									<p id="representanteTel" class=" text-center card-text"></p>
+									<p id="representanteCorreo" class=" text-center card-text"></p>
+								</div>
+							</div>
+						</div>
+				</section>
+			</div>
+			<div>
+				<section id="tarjetas" class="container cards-section "></section>
+			</div>
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
-			integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-			crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
-			integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-			crossorigin="anonymous"></script>
-		<script src="/__/firebase/7.14.1/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
-		<script>
-			$(document).ready(function () {
-				$('body').bootstrapMaterialDesign();
-			});
-		</script>
 
-		<script>
-			var firebaseConfig = {
-				apiKey: "AIzaSyBe1d7q_1pSzKphW6s35MpURU3RW6p6Tmk",
-				authDomain: "parcial-2-2a03c.firebaseapp.com",
-				databaseURL: "https://parcial-2-2a03c.firebaseio.com",
-				projectId: "parcial-2-2a03c",
-				storageBucket: "parcial-2-2a03c.appspot.com",
-				messagingSenderId: "683984370588",
-				appId: "1:683984370588:web:677165d873efef3d836659",
-				measurementId: "G-J61GM9QNHN",
-			};
-			firebase.initializeApp(firebaseConfig);
 
-			function getID(id) {
-				return document.getElementById(id).value;
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+		integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+		integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+		crossorigin="anonymous"></script>
+	<script src="/__/firebase/7.14.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('body').bootstrapMaterialDesign();
+		});
+	</script>
+
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyBe1d7q_1pSzKphW6s35MpURU3RW6p6Tmk",
+			authDomain: "parcial-2-2a03c.firebaseapp.com",
+			databaseURL: "https://parcial-2-2a03c.firebaseio.com",
+			projectId: "parcial-2-2a03c",
+			storageBucket: "parcial-2-2a03c.appspot.com",
+			messagingSenderId: "683984370588",
+			appId: "1:683984370588:web:677165d873efef3d836659",
+			measurementId: "G-J61GM9QNHN",
+		};
+		firebase.initializeApp(firebaseConfig);
+
+		function getID(id) {
+			return document.getElementById(id).value;
+		}
+		$("#registroOperador").click(function () {
+			console.log(localStorage.uid, "hi")
+			event.preventDefault();
+			function arrayJSON(
+				nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador
+			) {
+				var data = {
+					nombreOperador: nombreOperador,
+					emailOperador: emailOperador,
+					passwordOperador: passwordOperador,
+					imagenOperador: imagenOperador,
+					direccionOperador: direccionOperador,
+					UIDEmpresa: UIDEmpresa
+				}
+				return data
 			}
-			$("#registroOperador").click(function () {
-				console.log(localStorage.uid, "hi")
-				event.preventDefault();
-				function arrayJSON(
-					nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador
-				) {
-					var data = {
-						nombreOperador: nombreOperador,
-						emailOperador: emailOperador,
-						passwordOperador: passwordOperador,
-						imagenOperador: imagenOperador,
-						direccionOperador: direccionOperador,
-						UIDEmpresa: UIDEmpresa
-					}
-					return data
-				}
-				var nombreOperador = $("#nombreOperador").val();
-				var passwordOperador = $("#passwordOperador").val();
-				var imagenOperador = $('#imagenOperador').val()
-				var direccionOperador = $('#direccionOperador').val()
-				var emailOperador = $("#emailOperador").val()
-				var UIDEmpresa = localStorage.uid
-				var arrayOperador = arrayJSON(nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador)
-				var auth = firebase.auth()
+			var nombreOperador = $("#nombreOperador").val();
+			var passwordOperador = $("#passwordOperador").val();
+			var imagenOperador = $('#imagenOperador').val()
+			var direccionOperador = $('#direccionOperador').val()
+			var emailOperador = $("#emailOperador").val()
+			var UIDEmpresa = localStorage.uid
+			var arrayOperador = arrayJSON(nombreOperador, passwordOperador, imagenOperador, direccionOperador, UIDEmpresa, emailOperador)
+			var auth = firebase.auth()
 
 
-				var promise = auth.createUserWithEmailAndPassword(
-					emailOperador,
-					passwordOperador
-				)
-				// If there is any error stop the process.
-				promise.catch(function (error) {
-					var errorCode = error.code
-					console.log(`GOT ERROR: ` + errorCode)
-					if (errorCode == 'auth/weak-password') return // password to weak. Minimal 6 characters
-					if (errorCode == 'auth/email-already-in-use') return // Return a email already in use error
-				})
+			var promise = auth.createUserWithEmailAndPassword(
+				emailOperador,
+				passwordOperador
+			)
+			// If there is any error stop the process.
+			promise.catch(function (error) {
+				var errorCode = error.code
+				console.log(`GOT ERROR: ` + errorCode)
+				if (errorCode == 'auth/weak-password') return // password to weak. Minimal 6 characters
+				if (errorCode == 'auth/email-already-in-use') return // Return a email already in use error
+			})
 
-				promise.then(function () {
-					var userUid = auth.currentUser.uid
-					console.log(UIDEmpresa)
-					var db = firebase.database()
-					//db.collection('empresas').doc(userUid).set(arrayData)
-					db.ref('operadores').child(userUid).set(arrayOperador)
-					document.getElementById('registerForm').reset()
-				})
-			});
-		</script>
-		</script>
+			promise.then(function () {
+				var userUid = auth.currentUser.uid
+				console.log(UIDEmpresa)
+				var db = firebase.database()
+				//db.collection('empresas').doc(userUid).set(arrayData)
+				db.ref('operadores').child(userUid).set(arrayOperador)
+				document.getElementById('registerForm').reset()
+			})
+		});
+	</script>
+	</script>
+
+	<script>const container = document.getElementById('tarjetas');
+		firebase.database().ref('empresas' + localStorage.uid).once('value', function (snapshot) {
+			document.getElementById("compañiaNombre").innerHTML = snapshot.child('nombreEmpresa').val();
+			document.getElementById("representanteNombre").innerHTML = snapshot.child('nombreRepresentante').val();
+			document.getElementById("representanteTel").innerHTML = "Tel: " + snapshot.child('telefonoEmpresa').val();
+			document.getElementById("representanteCorreo").innerHTML = snapshot.child('registerEmail').val();
+		});</script>
 
 
-		<table style="width:100%" id="tabla">
-
-		</table>
-
-		<script>
-			var db = firebase.database();
-			var ref = db.ref("operadores");
-
-			var table = document.getElementById("tabla");
-
-			//limpia la tabla
-			table.innerHTML = "";
-
-			//con esta función recorre todos los datos almacenados en FB ordenados por mi child(tipo)
-
-			ref.orderByChild("empresas").equalTo(localStorage.uid).on("child_added", function (snapshot) {
-				//repite el proceso como cuantas referencias encuentre y los asigna a la lista "d"
-				var d = snapshot.val();
-
-				{
-					var row = table.insertRow(0);
-					var cell1 = row.insertCell(0);
-					var cell2 = row.insertCell(1);
-					var cell3 = row.insertCell(2);
-
-					// asigna a las celdas el valir del Child especificado
-					cell1.innerHTML = d.nombreOperador;
-					cell2.innerHTML = d.direccionOperador;
-					cell3.innerHTML = d.emailOperador;
-				}
-			});
-		</script>
 </body>
 
 </html>
